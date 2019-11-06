@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SampleValueConverter"
+             xmlns:custom="clr-namespace:SampleValueConverter;assembly=SampleValueConverter"
+             x:Class="SampleValueConverter.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <custom:NumberToColorConverter x:Key="colorConvertor"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <ListView x:Name="listData">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" TextColor="{Binding ColorNumber,Converter={StaticResource colorConvertor}}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
